@@ -6,3 +6,5 @@ That project however is deprecated as found out by following and then experienci
 This project has been created by me to document the steps I have taken as well as the steps to mitigate the errors and remove errors in tutorials due to being based on deprecated or old packages. All the steps are available in the Documentation Folder and the code available in their respective folders.
 
 Majority of steps followed along will be same with additions provided to bring those up to date.
+
+The original Tutorial will be heavily used and referenced at it is still very viable. However since it isn't kept updated some of its steps have become incorrect and produce errors.

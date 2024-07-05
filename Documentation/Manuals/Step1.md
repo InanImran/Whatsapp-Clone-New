@@ -1,3 +1,5 @@
+# 1. Creating a basic React App
+
 This tutorial uses react along with typescript to build this project. React is a popular javascript framework that allows interactive apps to be built easily. Typescript is a modified form of javascript that provides type safety to javascript so user does not encounter any variable type errors during execution.
 
 In the first step we use boilerplate code to start. Press Ctrl + ~ to open terminal in the folder where you want to base your project. Running the following command:
@@ -80,4 +82,5 @@ This is a regular HTML file as can be seen. We can edit the title to suit our ne
 The public folder contains assets that we do not want to change. When we will finally prepare app for production `create-react-app` will place those assets ina  build folder and reference them into HTML template.
 
 TODO: Look at manifest.json
+and follow along original manual and look at files.
 
