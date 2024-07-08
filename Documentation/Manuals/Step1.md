@@ -25,7 +25,21 @@ This will run the code and serve a webpage on your computer on port 3000. If web
 [Sample-Page](/Documentation/Resources/Sample_Page.png)
 
 Now lets look at the files created automatically and how they serve the webpage shown on the browser.
-The file opened by the browser is index.html that sits inside the `/public` folder.
+
+The first file we will make changes to is the `manifest.json` file inside the public folder.
+The public folder contains assets that we do not want to change, currently it is populated with static images and HTML templates. When we will finally prepare app for production `create-react-app` will place those assets ina  build folder and reference them into HTML template.
+ This file gives browsers information about or app in case users permanently install the app on their phones or PCs.
+```diff
+{
+-  "short_name": "React App",
+-  "name": "Create React App Sample",
++ "short_name": "Whatsapp Clone",
++ "name": "An open source chat app",
+  "icons": [
+    {
+      "src": "favicon.ico",
+```
+Let us look at the file opened by the browser that is index.html that sits inside the `/public` folder.
 
 ```HTML
 <!DOCTYPE html>
@@ -79,8 +93,64 @@ This is a regular HTML file as can be seen. We can edit the title to suit our ne
 +<title>Whatsapp Clone</title>
 ```
 
-The public folder contains assets that we do not want to change. When we will finally prepare app for production `create-react-app` will place those assets ina  build folder and reference them into HTML template.
+Looking at the body of the file we can see it contains only one <div> tag which is empty:
+```HTML
+<div id="root"></div>
+```
+If the HTML file opened by the browser is empty, then how is the website built with the react logo and other elements. When we ran `create-react-app`, the file and folder created were structured in such a way that that scripts inside the `src/index.tsx` file will run together with the HTML template, so let's look at that file.
 
-TODO: Look at manifest.json
-and follow along original manual and look at files.
+```Typescript
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+);
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
+```
+
+Looking at the file line by line we first can see that we are importing a couple of files:
+
+```Typescript
+import React from 'react';
+```
+First we are importing ```React``` module. This is a package that can be installed by any package manager ( in our case it is yarn. ). This imports all the functions and their necessary variables from react package.
+
+
+```Typescript
+import ReactDOM from 'react-dom/client';
+```
+We are now importing react-dom library. DOM stands for Document Object Model. When a webpage is rendered the browser creates a DOM which is basically a tree structure containing all its elements as branches. Usually when changes are made to DOM the webpage is rendered again by the browser. React makes use of DOM more smartly, it creates a virtual DOM which is an efficient copy of actual DOM and makes changes on virtual DOM. Afterwards it compares real and virtual DOM and only make changes to the part that is updated and also only re-render the part that is updated. In this way REACT provides a performative way to make changes to the webpage through DOM manipulation.
+
+The React module provides DOM functions for both client and server side. Here the client side module has been imported.
+
+
+```Typescript
+import './index.css';
+```
+imports `index.css` file present in the src directory. This allows us to use the styling present in the app.
+
+```Typescript
+import App from './App';
+```
+import `app.tsx` file present in the src directory. This imports the App function necessary which renders the element seen on the webpage. We will look at app.tsx afterwords to see its structure.
+
+
+```Typescript
+import reportWebVitals from './reportWebVitals';
+```
+These are react functions that can be used to measure and analyze performance metrics of our application.
+
 
